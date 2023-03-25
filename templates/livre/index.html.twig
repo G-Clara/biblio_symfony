@@ -5,28 +5,17 @@
 {% block body %}
     <h1>Livre index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Photo</th>
-                <th>Alt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
         {% for livre in livres %}
-            <tr>
-                <td>{{ livre.id }}</td>
-                <td>{{ livre.nom }}</td>
-                <td>{{ livre.photo }}</td>
-                <td>{{ livre.alt }}</td>
-                <td>
+            <a href="{{ path('app_livre_show', {'id': livre.id}) }}">
+                <article class="bg-[#EEEEEE] hover:bg-[#5C9EAD] transition-colors duration-500 w-fit p-5 case">
+                    <img src="{{ livre.photo }}" class=" w-60 h-60 flex items-end">
+                        <h5 class="bg-[#5C9EAD] text-[#EEEEEE] w-36 py-2 mb-5 pr-2 text-end rounded-r-xl name_salle">{{ livre.nom }}</h5>
+                    </img>
+                </article>
+            </a>
                     <a href="{{ path('app_livre_show', {'id': livre.id}) }}">show</a>
                     <a href="{{ path('app_livre_edit', {'id': livre.id}) }}">edit</a>
-                </td>
-            </tr>
+                
         {% else %}
             <tr>
                 <td colspan="5">no records found</td>

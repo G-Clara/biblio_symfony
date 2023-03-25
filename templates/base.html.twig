@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <script src="https://cdn.tailwindcss.com"></script>
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
@@ -13,7 +14,7 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
         <nav>
-            <a href="{{ path('home') }}">Accueil</a>
+            <a href="{{ path('app_livre_index') }}">livres</a>
             {# <a href="{{ path('apropos') }}">A Propos</a> #}
             {# <a href="{{ path('nombre', {id:1}) }}">Nombre 1</a> #}
         </nav>
