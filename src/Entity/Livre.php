@@ -33,6 +33,8 @@ class Livre
     public function __construct()
     {
         $this->id_auteur = new ArrayCollection();
+        $this->panier = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -110,6 +112,72 @@ class Livre
     {
         if ($this->id_auteur->removeElement($idAuteur)) {
             $idAuteur->removeCategory($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Panier>
+     */
+    public function getPanier(): Collection
+    {
+        return $this->panier;
+    }
+
+    public function addPanier(Panier $panier): self
+    {
+        if (!$this->panier->contains($panier)) {
+            $this->panier->add($panier);
+            $panier->addCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removePanier(Panier $panier): self
+    {
+        if ($this->panier->removeElement($panier)) {
+            $panier->removeCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function getIdEditeur(): ?Editeur
+    {
+        return $this->id_editeur;
+    }
+
+    public function setIdEditeur(?Editeur $id_editeur): self
+    {
+        $this->id_editeur = $id_editeur;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users->add($user);
+            $user->addCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            $user->removeCategory($this);
         }
 
         return $this;
