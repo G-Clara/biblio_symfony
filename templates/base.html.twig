@@ -12,6 +12,11 @@
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
+        <nav>
+            <a href="{{ path('home') }}">Accueil</a>
+            {# <a href="{{ path('apropos') }}">A Propos</a> #}
+            {# <a href="{{ path('nombre', {id:1}) }}">Nombre 1</a> #}
+        </nav>
     </head>
     <body>
         {% block body %}{% endblock %}
