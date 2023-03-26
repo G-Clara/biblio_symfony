@@ -24,9 +24,6 @@ class Auteur
     #[ORM\Column(length: 255)]
     private ?string $alt = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $relation = null;
-
     #[ORM\ManyToMany(targetEntity: Livre::class, inversedBy: 'id_auteur')]
     private Collection $Category;
 
@@ -79,13 +76,6 @@ class Auteur
     public function getRelation(): ?string
     {
         return $this->relation;
-    }
-
-    public function setRelation(string $relation): self
-    {
-        $this->relation = $relation;
-
-        return $this;
     }
 
     /**
