@@ -14,11 +14,11 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
 
-        <nav class="flex flex-row ">
+        <nav class="flex flex-row my-2 py-5 bg-[#F9dcc4]">
             <h1 class="ml-5">
                 <a href="{{ path('home') }}" class="text-3xl font-title md:text-5xl">Bibliothèque</a>
             </h1>
-            <div class="flex justify-center mx-5 my-5">
+            <div class="mx-5 my-5 flex justify-evenly justify-evenly w-3/4">
                 <a href="{{ path('app_livre_index') }}">Les livres</a>
                 <a href="{{ path('app_auteur_index') }}">Les auteurs</a>
                 <a href="{{ path('app_editeur_index') }}">Les éditeurs</a>
