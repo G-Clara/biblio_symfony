@@ -27,9 +27,13 @@ class Editeur
     #[ORM\OneToMany(mappedBy: 'id_editeur', targetEntity: Livre::class)]
     private Collection $Category;
 
+    #[ORM\ManyToMany(targetEntity: Livre::class, inversedBy: 'id_editeur')]
+    private Collection $category;
+
     public function __construct()
     {
         $this->Category = new ArrayCollection();
+        $this->category = new ArrayCollection();
     }
 
     public function getId(): ?int

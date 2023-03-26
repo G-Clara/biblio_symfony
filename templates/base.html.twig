@@ -21,7 +21,15 @@
             <div class="mx-5 my-5 flex justify-evenly justify-evenly w-3/4">
                 <a href="{{ path('app_livre_index') }}">Les livres</a>
                 <a href="{{ path('app_panier_index') }}">Panier</a>
-                <a href="{{ path('app_editeur_index') }}">Les éditeurs</a>
+                {% if app.user %}
+                    <a href="{{ path('app_logout') }}" title="{{app.user.username}}"
+                        class="px-3 py-2 font-bold bg-[#fec89a] hover:bg-[#f8edeb] hover:text-[#ffb5a7] rounded-3xl md:px-4 transition-colors duration-500">Se
+                        déconnecter</a>
+                {% else %}
+                    <a href="{{ path('app_login') }}"
+                        class="px-3 py-2 font-bold bg-[#fec89a] hover:bg-[#f8edeb] hover:text-[#ffb5a7] rounded-3xl md:px-4 transition-colors duration-500">Se
+                        connecter</a>
+                {% endif %}
             </div>
 
             {# <a href="{{ path('apropos') }}">A Propos</a> #}

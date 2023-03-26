@@ -30,11 +30,18 @@ class Livre
     #[ORM\ManyToMany(targetEntity: Auteur::class, mappedBy: 'Category')]
     private Collection $id_auteur;
 
+    #[ORM\Column]
+    private ?float $prix = null;
+
+    #[ORM\ManyToMany(targetEntity: Editeur::class, mappedBy: 'category')]
+    private Collection $id_editeur;
+
     public function __construct()
     {
         $this->id_auteur = new ArrayCollection();
         $this->panier = new ArrayCollection();
         $this->users = new ArrayCollection();
+        $this->id_editeur = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -178,6 +185,37 @@ class Livre
     {
         if ($this->users->removeElement($user)) {
             $user->removeCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function getPrix(): ?float
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(float $prix): self
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function addIdEditeur(Editeur $idEditeur): self
+    {
+        if (!$this->id_editeur->contains($idEditeur)) {
+            $this->id_editeur->add($idEditeur);
+            $idEditeur->addCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIdEditeur(Editeur $idEditeur): self
+    {
+        if ($this->id_editeur->removeElement($idEditeur)) {
+            $idEditeur->removeCategory($this);
         }
 
         return $this;

@@ -1,0 +1,53 @@
+{% extends 'user_base.html.twig' %}
+
+{% block title %}Sign In!{% endblock %}
+
+{% block body %}
+    <form method="post" class="h-screen flex flex-col items-center justify-center">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <h5 class="text-2xl text-[#EEEEEE] font-bold">Vous êtes connecté en tant que</h5>
+            <p class="p-3 mt-5 text-center text-[#EEEEEE]">{{ app.user.userIdentifier }}</p>
+            <div>
+                <div class="bg-[#FFb5a] text-2xl rounded-full min-w-[50px] min-h-[50px] text-[#5C9EAD] font-bold flex justify-center items-center">
+                    <i class="bi bi-box-arrow-right"></i>
+                </div>
+                <a href="{{ path('app_logout') }}" class="p-3 bg-[#EEEEEE] text-[#326273] rounded-full mt-12 uppercase font-bold w-[250px] text-center">Se déconnecter</a>
+            </div>
+            <a href="{{ path('app_logout') }}" class="p-3 bg-[#326273] text-[#EEEEEE] rounded-full mt-12 font-bold uppercase w-[250px] text-center">Accueil</a>
+        {% else %}
+
+            <h1 class="text-6xl font-title text-[#EEEEEE]">User Login</h1>
+            <div class="bg-[#EEEEEE] p-3 mt-12 rounded-full">
+                <p class="text-[#326273]">Vous n'avez pas encore de compte ? <a href="{{ path('app_register') }}" class="text-[#5C9EAD]">Inscrivez-vous</a> maintenant !</p>
+            </div>
+            <div class="flex justify-center items-center flex-col gap-10 mt-12">
+                <div class="flex flex-row gap-8 mt-12">
+                    <div class="bg-[#EEEEEE] text-2xl rounded-full min-w-[50px] min-h-[50px] text-[#5C9EAD] font-bold flex justify-center items-center">
+                        <i class="bi bi-envelope"></i>
+                    </div>
+                    <input type="username" value="{{ last_username }}" name="username" id="inputusername" class="w-[250px] rounded-3xl px-5 border-none bg-[#EEEEEE]" autocomplete="username" placeholder="Nom d'utilisateur" required autofocus>
+                </div>
+                <div class="flex flex-row gap-8">
+                    <div class="bg-[#EEEEEE] text-2xl rounded-full min-w-[50px] min-h-[50px] text-[#5C9EAD] font-bold flex justify-center items-center">
+                        <i class="bi bi-lock"></i>
+                    </div>
+                    <input type="password" name="password" id="inputPassword" class="w-[250px] rounded-3xl px-5 border-none	bg-[#EEEEEE]" autocomplete="current-password" placeholder="Mot de passe" required>
+                </div>
+        
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                <div class="flex flex-row gap-8">
+                    <div class="bg-[#EEEEEE] text-2xl rounded-full min-w-[50px] min-h-[50px] text-[#5C9EAD] font-bold flex justify-center items-center">
+                        <i class="bi bi-box-arrow-in-right"></i>
+                    </div>
+                    <button class="bg-[#326273] hover:bg-[#EEEEEE] rounded-3xl w-[250px] uppercase hover:text-[#326273] text-[#EEEEEE] font-bold" type="submit">
+                        Login
+                    </button>
+                </div>
+            </div>
+        {% endif %}
+    </form>
+{% endblock %}
