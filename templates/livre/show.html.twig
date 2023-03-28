@@ -3,29 +3,16 @@
 {% block title %}Livre{% endblock %}
 
 {% block body %}
-    <h1>Livre</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ livre.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ livre.nom }}</td>
-            </tr>
-            <tr>
-                <th>Photo</th>
-                <td>{{ livre.photo }}</td>
-            </tr>
-            <tr>
-                <th>Alt</th>
-                <td>{{ livre.alt }}</td>
-            </tr>
-        </tbody>
-    </table>
-
+    <h2 class="flex justify-center text-xl my-2 md:my-4 lg:text-4xl ">{{ livre.nom }}</h2>
+    <div class="flex flex-row">
+        <img src="{{ livre.photo }}" alt="{{ livre.alt }}">
+        <div class="flex flex-col">
+            <p>{{ livre.description }}</p>
+            <p>{{ livre.prix }} €</p>
+        </div>
+    </div>
+    {# {% for auteur in auteurs %}
+    {% endfor %} #}
     <a href="{{ path('app_livre_index') }}">back to list</a>
 
     <a href="{{ path('app_livre_edit', {'id': livre.id}) }}">edit</a>

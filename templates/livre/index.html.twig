@@ -3,6 +3,17 @@
 {% block title %}Livre index{% endblock %}
 
 {% block body %}
+{# <h2>Prix</h2>
+            <p><a href="livres_by_prix.php?prix=0">Prix croissant</a></p>
+            <p><a href="livres_by_prix.php?prix=1">Prix décroissant</a></p>
+        </div>
+
+        <div class="filtre_groupe wrap">
+            <h2>Langues</h2>{% for langue in langues %} <p> <a href="livres_by_langue.php?id_langue={{langue.id }}">{{langue.type}}</a></p>{% endfor %}
+        </div>
+
+        <div class="filtre_groupe">
+            <h2>Auteurs</h2>{% for auteur in auteurs %} <p class="filtre_auteur"><a href="livres_by_auteur.php?id_auteur={{ auteur.id }}">{{auteur.prenom}} {{auteur.nom}}</a></p>{% endfor %} #}
     <h1>Livre index</h1>
     <div class="flex flex-wrap flex-row">
         {% for livre in livres %}
