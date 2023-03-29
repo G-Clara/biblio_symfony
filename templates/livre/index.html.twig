@@ -26,15 +26,18 @@
                     <a href="{{ path('app_livre_show', {'id': livre.id}) }}">show</a>
                     <a href="{{ path('app_livre_edit', {'id': livre.id}) }}">edit</a>
                 </article>
+                <p>{{livre.auteur_id}}</p>
+
             </a>
         {% else %}
             <tr>
                 <td colspan="5">no records found</td>
             </tr>
         {% endfor %}
+        {# {% for livre in auteur.livre %}
+        <p>{{ auteur.nom }}</p>
+    {% endfor %} #}
     </div>
-        </tbody>
-    </table>
 
     <a href="{{ path('app_livre_new') }}">Create new</a>
 {% endblock %}

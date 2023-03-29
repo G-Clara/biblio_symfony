@@ -11,8 +11,12 @@
             <p>{{ livre.prix }} €</p>
         </div>
     </div>
-    {# {% for auteur in auteurs %}
-    {% endfor %} #}
+
+    {% for livre in auteur.livre %}
+        <p>{{ auteur.nom }}</p>
+    {% endfor %}
+
+
     <a href="{{ path('app_livre_index') }}">back to list</a>
 
     <a href="{{ path('app_livre_edit', {'id': livre.id}) }}">edit</a>
